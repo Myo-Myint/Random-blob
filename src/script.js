@@ -12,6 +12,7 @@ import fragmentShader from './shaders/fragment.glsl'
  */
 // Debug
 const gui = new dat.GUI({ width: 340 })
+gui.hide()
 
 // Canvas
 const canvas = document.querySelector('canvas.webgl')
@@ -42,7 +43,7 @@ window.addEventListener('resize', () =>
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
 })
 
-const geometry = new THREE.SphereBufferGeometry( 0.5, 150, 150 );
+const geometry = new THREE.SphereBufferGeometry( 0.5, 300, 300 );
 
 /**
  * * shaderMaterial
@@ -72,6 +73,9 @@ scene.add(camera)
 // Controls
 const controls = new OrbitControls(camera, canvas)
 controls.enableDamping = true
+controls.enablePan = false
+controls.minDistance = 1.2
+controls.maxDistance = 2
 
 /**
  * Renderer
